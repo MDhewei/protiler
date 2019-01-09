@@ -5,7 +5,7 @@ Copyright (C) 2019, Wei He (hwkobe.1027@gmail.com)
 
 ProTiler is a novel computational method for fine-mapping of protein regions that are hyper-sensitive to CRISPR/Cas9 mediated gene knockouts from high-throughput tiling-sgRNA functional screens. 
 
-Also, ProTiler is able to predict HS regions for proteins encoded by any given genes from other common protein features including conservation, domain annotation, secondary structures and PTMs distribution.
+Also, ProTiler is able to predict HS regions for protein encoded by any given gene from other common protein features including conservation, domain annotation, secondary structures and PTMs distribution.
 
 
 ## Installation
