@@ -126,7 +126,7 @@ protiler call -i Novartis.trimmed.new.txt -g CREBBP -s 9,10,11 -o ProtilerOutput
 
 
 
-## 2 protiler predict: Predict and visualize HS regions from common protein features.
+## 2. protiler predict: Predict and visualize HS regions from common protein features.
 
 ###  Arguments of the program:
 
