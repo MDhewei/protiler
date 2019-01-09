@@ -54,7 +54,7 @@ python setup.py install
 
 ## ProTiler has two major functions: 
 
-## 1. protiler call: Call and visualize HS regions from CRISPR tiling screen data.
+## 1. Call: Call and visualize HS regions from CRISPR tiling screen data.
 
 
 ### Protiler call take table file(.cvs or .txt) recording CRISPR tiling screen data as input. An example is shown as below:
@@ -126,7 +126,7 @@ protiler call -i Novartis.trimmed.new.txt -g CREBBP -s 9,10,11 -o ProtilerOutput
 
 
 
-## 2. protiler predict: Predict and visualize HS regions from common protein features.
+## 2. Predict: Predict and visualize HS regions from common protein features.
 
 ###  Arguments of the program:
 
