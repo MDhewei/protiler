@@ -36,7 +36,7 @@ bash Anaconda2-2018.12-Linux-x86_64.sh
 pip install matplotlib==2.2.3 pandas sklearn numpy seaborn
 ```
 > Install R packages in R IDE:
-```
+```r
 install.packages('breakfast')
 install.packages('stringr')
 ```
