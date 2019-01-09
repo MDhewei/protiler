@@ -1,0 +1,1 @@
+protiler call -i sample.csv -g CREBBP -s 6,7 

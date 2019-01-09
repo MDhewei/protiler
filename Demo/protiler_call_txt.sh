@@ -1,0 +1,1 @@
+protiler call -i sample.txt -g SMARCB1 -s 9,10,11
