@@ -31,7 +31,7 @@ bash Anaconda2-2018.12-Linux-x86_64.sh
 
 ### Step2: Install required packages
 
-> Install Python Packages with pip:
+> *Install Python Packages with pip*:
 ```console
 pip install matplotlib==2.2.3 pandas sklearn numpy seaborn
 ```
