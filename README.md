@@ -44,7 +44,7 @@ install.packages('stringr')
 ### Step3: Install ProTiler 
 
 ```console
-git clone https://github.com/MDhewei/ProTiler.git
+git clone https://github.com/MDhewei/ProTiler-1.0.0.git
 cd ProTiler
 python setup.py install
 ```
