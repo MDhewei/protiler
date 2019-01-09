@@ -13,13 +13,13 @@ Also, ProTiler is able to predict HS regions for proteins encoded by any given g
 ProTiler is written in Python and R, Python2.7 and R3.5.0 is needed
 
 ### Dependencies
->** Python Packages**:
+> Python Packages:
 - matplotlib
 - pandas
 - numpy
 - seaborn
 
->** R packages**:
+> R packages:
 - breakfast
 - stringr
 
@@ -31,11 +31,11 @@ bash Anaconda2-2018.12-Linux-x86_64.sh
 
 ### Step2: Install required packages
 
->** Install Python Packages with pip**:
+> Install Python Packages with pip:
 ```console
 pip install matplotlib==2.2.3 pandas sklearn numpy seaborn
 ```
->** Install R packages in R IDE**:
+> Install R packages in R IDE:
 ```
 install.packages('breakfast')
 install.packages('stringr')
