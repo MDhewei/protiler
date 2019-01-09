@@ -1,7 +1,7 @@
 Copyright (C) 2019, Wei He (hwkobe.1027@gmail.com)
 
 
-# ProTiler: 
+# ProTiler
 
 ProTiler is a novel computational method for fine-mapping of protein regions that are hyper-sensitive to CRISPR/Cas9 mediated gene knockouts from high-throughput tiling-sgRNA functional screens. 
 
