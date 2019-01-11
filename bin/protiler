@@ -74,7 +74,7 @@ def ProTilerMain():
     exons_dic = json.loads( open(exons_dic_file).read())
     
     logging.info('Loading and reading genome-wide domain annotation...')
-    domain_dic_file =  os.path.join(RequiredFilePath,'domain_dic') 
+    domain_dic_file =  os.path.join(RequiredFilePath,'Pfam_genome_dic') 
     domain_genome_dic = json.loads( open(domain_dic_file).read())
     
     logging.info('Loading and reading genome-wide secondary structure annotation files...')
