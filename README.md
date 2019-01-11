@@ -57,13 +57,13 @@ python setup.py install
 ## 1. Call: Call and visualize HS regions from CRISPR tiling screen data.
 
 
-### Protiler call take table file(.cvs or .txt) recording CRISPR tiling screen data as input. This file is tab-delimited or others for .txt?.An example is shown as below: (This example table has five columns. It is a little misleading here, I think you can only list one score value)
+### Protiler call take table file(.cvs or .txt) recording CRISPR tiling screen data as inpu.An example is shown as below: 
 
 ![](ExampleFiles/InputTable.png)
 
 ### Three colums are required:
 
-- Symbol: This column record the symbol of target gene, for example: 'CREBBP','ACTL6A' (only one gene is enough)
+- Symbol: This column record the symbol of target gene, for example: 'CREBBP','ACTL6A' 
 
 - AA: the amino acid position which certain sgRNAs cutting (what does this means?)
 
