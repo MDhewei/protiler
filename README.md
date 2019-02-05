@@ -110,7 +110,7 @@ python setup.py install
 ### Example to run protiler call
 
 ```console
-protiler call -i Novartis.trimmed.new.txt -g CREBBP -s 9,10,11 -o ProtilerOutput
+protiler call -i sample.txt -g CREBBP -s 9,10,11 -o ProtilerOutput
 ```
 
 ### Output
