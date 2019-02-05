@@ -118,6 +118,14 @@ protiler call -i Novartis.trimmed.new.txt -g CREBBP -s 9,10,11 -o ProtilerOutput
 #### 1. SegmentFile: A table record all the HS regions called by ProTiler for certain gene.
 ![](ExampleFiles/HS_CREBBP.png)
 
+- AA.start: the start residue position of the segments called with TGUH
+- AA.end: the end residue position of the segments called with TGUH
+- n: the number of sgRNAs targeting the region
+- m: the mean score of sgRNAs targeting the region
+- is.HS.site: to judge whether the segment is a hyper-sensitive region
+- length: the length of the segment
+- Gene: the symbol of the target gene
+
 #### 2. Figure4Visualization: Figure presenting signals, HS regions and other protein annotations. For example:
 
 ![](ExampleFiles/Segmentfigure_CREBBP.png)
