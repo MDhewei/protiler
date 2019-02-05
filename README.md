@@ -76,33 +76,31 @@ python setup.py install
 
 - -i/--inputfile: 
      
-     the file path to the input table 
+     the file path to the input table recording tiling CRISPR sgRNA annotations and signals. .csv,.txt,.xlsx format are supported 
  
  
 - -g/--gene_id: 
 
-     the symmbol of target gene, for example: 'CREBBP','ACTL6A'
+     the official symbol of target gene, for example: 'CREBBP','ACTL6A'
  
  
 - -s/--score_columns: 
 
-     the column number(s) of CRISPR scores
+     the column number(s) of input table that recording CRISPR knowckout scores
  
 #### Optional arguments:
 
 - -o/--outputdir: 
 
-     the directory to save output files
+     the directory name created in the current working directory to save output files, default='ProTilerOutput'
      
 - -f/--half_size: 
 
      The number of neiboring signals from each side selected to filter inefficient sgRNAs',default='5'
 
-
 - -t1/--threshold: 
 
-     Threshold to supress the filtered signals',default='2'
-
+     Threshold to supress the outliers among the signals',default='2'
 
 - -t2/--threshold2: 
 
