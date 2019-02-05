@@ -138,7 +138,7 @@ protiler call -i sample.txt -g CREBBP -s 9,10,11 -o ProtilerOutput
 
 #### Required arguments:
 
-- -i/--gene_list: 
+- -l/--gene_list: 
      
      A list of candidate genes for which you want to predict HS regions. eg: CREBBP,FAM122A,AURKB
  
