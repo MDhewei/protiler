@@ -1,4 +1,4 @@
-Copyright (C) 2019, Xu lab, MD Anderson Cancer Center (whe3@mdanderson.org)
+Copyright (C) 2019, MD Anderson Cancer Center (whe3@mdanderson.org)
 
 
 # ProTiler
