@@ -82,14 +82,15 @@ def PlotScatterOfScore(resMax,gene):
     #score_list = df_score['aver.score']
     
     ## Plot scatter plot
-    plt.ylabel('Tiling CRISPR Z-Score',fontsize=8)
-    plt.scatter(aa_list_1,score_list_1,s=4,marker='o',c='black',label='Efficient',alpha=0.6)
+    #plt.ylabel('Tiling CRISPR Z-Score',fontsize=8)
+    plt.scatter(aa_list_1,score_list_1,s=4,marker='o',label='Efficient')
     plt.scatter(aa_list_0,score_list_0,s=4,marker='o',c='silver',label='Inefficient')
     x = np.linspace(0,resMax);y = 0*x
     
     ## Plot segment lines 
     plt.plot(range(0,len(est_list)),est_list,c='r',label='Seg_pattern')
     plt.plot(x,y,color='black',linewidth=0.8)
+    plt.text(-(resMax/6.5),(max(score_list_1)+min(score_list_1))/2,'Z-score:',fontsize=14)
     
     ## Remove the intermediate files
     os.system('rm '+gene+'_Est.csv')
@@ -111,17 +112,17 @@ def PlotScatterOfScore(resMax,gene):
 def PlotHSregion(resMax,gene,outputdir):
     ## Read the HS region information from table file.
     df_hs = pd.read_csv(gene+'_Segments.csv')
-    plt.text(-(resMax/8),6.5,'HS_Regions:',fontsize=8)
+    plt.text(-(resMax/6.5),7.2,'CKHS_Regions:',fontsize=14)
     
     ## Generate a blank track with light color
-    plt.bar(resMax/2,0.6,width=resMax,bottom=6.3,color='silver',alpha=0.2)
+    plt.bar(resMax/2,0.6,width=resMax,bottom=7.0,color='silver',alpha=0.2)
     #plt.bar(start + (end-start)/2, 0.4,width=end-start,bottom = 2.0,facecolor='darkred',alpha=0.3)
     for i in range(df_hs.shape[0]):
         start = list(df_hs['AA.start'])[i]
         end = list(df_hs['AA.end'])[i]
         score = list(df_hs['m'])[i]
-        plt.bar(start + (end-start)/2, 0.6 ,width=end-start,bottom = 6.3,facecolor='darkred',alpha=0.3)
-        x = np.linspace(start+5,end-5);y = 0*x+3.5
+        plt.bar(start + (end-start)/2, 0.6 ,width=end-start,bottom = 7.0,facecolor='darkred',alpha=0.3)
+        #x = np.linspace(start+5,end-5);y = 0*x+3.5
         
     ## move the file recording HS regions into outputfir
     os.system('mv '+gene+'_Segments.csv '+ outputdir+'/'+gene+'_Segments.csv')
@@ -141,8 +142,8 @@ def PlotHSregion(resMax,gene,outputdir):
 '''
 def PlotDomain(resMax,gene,domain_genome_dic): 
     ## Generate a blank track with light color
-    plt.bar(resMax/2,0.6,width=resMax,bottom=2.0,color='silver',alpha=0.2)
-    plt.text(-(resMax/7),2.2,'Pfam_Domains:',fontsize=8)
+    plt.bar(resMax/2,0.6,width=resMax,bottom=4.0,color='silver',alpha=0.2)
+    plt.text(-(resMax/6.5),4.2,'Pfam_Domains:',fontsize=14)
     
     ## Make sure the domain_dic contains the target genes
     if domain_genome_dic.has_key(gene):
@@ -158,13 +159,14 @@ def PlotDomain(resMax,gene,domain_genome_dic):
            dom_loc = dom_list[i][1]
            dom_wid = dom_list[i][2]-dom_list[i][1]
            ## Plot the domain region with different color and text annotation
-           plt.bar(dom_loc + dom_wid/2, 0.6 ,width=dom_wid,bottom = 2.0,
-                   facecolor=color_list[i%len(color_list)],alpha=0.3)
+           plt.bar(dom_loc + dom_wid/2, 0.6 ,width=dom_wid,bottom = 4.0,
+                   facecolor=color_list[0],alpha=0.3)
            ## Add text to annotate domain names 
-           if i>1 and dom_loc-dom_list[i-1][1] < resMax/20:
-              plt.text(dom_loc+dom_wid/2.2,2.3,dom[0:4],fontsize=8,horizontalalignment='center') 
+           if len(dom) < 5:
+               plt.text(dom_loc+dom_wid/2.3,3.5,dom,fontsize=12,horizontalalignment='center')
            else:
-              plt.text(dom_loc+dom_wid/2.2,2.1,dom[0:4],fontsize=8,horizontalalignment='center')  
+               plt.text(dom_loc+dom_wid/2.3,3.5,dom[0:8],fontsize=12,horizontalalignment='center')
+                
     else:
          logging.info('Domain annotation is not avilable for %s'%gene)
 
@@ -211,7 +213,7 @@ def GetResList(gene,exons_dic):
    
 '''
 def PlotExons(resNumList,resMax):
-    plt.text(-(resMax/10),1.2,'Exons:',fontsize=8)
+    plt.text(-(resMax/6.5),1.2,'Exons:',fontsize=14)
     ## Use dark and color to discriminate adjacent exons.
     for i in range(len(resNumList)-1):
         exon_wid = resNumList[i+1]-resNumList[i]
@@ -252,62 +254,48 @@ def GetPtmKDE(ptm_list,resMax,bw):
    o output: This function will plot four bar tracks recording distribution of different PTMs
 '''
 def PlotPMS(resMax,gene,po_dic,ac_dic,me_dic,ub_dic):
-    plt.text(-(resMax/8),0.2,'Acety_Sites:',fontsize=8)
-    plt.bar(resMax/2,0.6,width=resMax,bottom=0,color='silver',alpha=0.2)
+    plt.text(-(resMax/6.5),-1.8,'Acetylation:',fontsize=14)
+    plt.bar(resMax/2,0.6,width=resMax,bottom=-2.0,color='silver',alpha=0.2)
     if ac_dic.has_key(gene):
        ac_loc_list = [i[0] for i in ac_dic[gene] if i[1]>=2]
        ac_ref_list = [i[1] for i in ac_dic[gene] if i[1]>=2]
        #print ac_loc_list,ac_ref_list
-       ac_kde_list = GetPtmKDE(ac_loc_list,resMax,4)
-       plt.bar(ac_loc_list,[0.6]*len(ac_loc_list),width=2,bottom=0,color='r',label='Acety_site')
+       #ac_kde_list = GetPtmKDE(ac_loc_list,resMax,4)
+       plt.bar(ac_loc_list,[0.6]*len(ac_loc_list),width=2,bottom=-2.0,color='r',label='Acety_site')
        #plt.bar(ac_loc_list,ac_ref_list,width=resMax/800,color='black')
     else:
-        ac_kde_list = [0]*int(resMax)
         logging.warning('No acetylation sites in the protein!')
     
-    plt.text(-(resMax/8),-1.3,'Methy_Sites:',fontsize=8)
-    plt.bar(resMax/2,0.6,width=resMax,bottom=-1.5,color='silver',alpha=0.2)
+    plt.text(-(resMax/6.5),-4.8,'Methylation:',fontsize=14)
+    plt.bar(resMax/2,0.6,width=resMax,bottom=-5.0,color='silver',alpha=0.2)
     if me_dic.has_key(gene):
        me_loc_list = [i[0] for i in me_dic[gene] if i[1]>=2]
        me_ref_list = [i[1] for i in me_dic[gene] if i[1]>=2]
-       me_kde_list = GetPtmKDE(me_loc_list,resMax,4)
-       plt.bar(me_loc_list,[0.6]*len(me_loc_list),width=2,color='g',bottom=-1.5,label='Methy_site')
+       plt.bar(me_loc_list,[0.6]*len(me_loc_list),width=2,color='g',bottom=-5.0,label='Methy_site')
        #plt.bar(me_loc_list,me_ref_list,width=resMax/800,color='black')
-    else:
-        me_kde_list = [0]*int(resMax)
-        logging.warning('No methylation sites in the protein!')
-    
-    plt.text(-(resMax/8),-2.8,'Phos_Sites:',fontsize=8)
-    plt.bar(resMax/2,0.6,width=resMax,bottom=-3.0,color='silver',alpha=0.2)
+    else:   
+        logging.warning('No Methylation sites in the protein!')
+
+    plt.text(-(resMax/6.5),-0.3,'Phosphorylation:',fontsize=14)
+    plt.bar(resMax/2,0.6,width=resMax,bottom=-0.5,color='silver',alpha=0.2)
     if po_dic.has_key(gene):
        po_loc_list = [i[0] for i in po_dic[gene] if i[1]>=2]
        po_ref_list = [i[1] for i in po_dic[gene] if i[1]>=2]
-       po_kde_list = GetPtmKDE(po_loc_list,resMax,4)
-       plt.bar(po_loc_list,[0.6]*len(po_loc_list),width=2,color='b',bottom=-3.0,label='Phos_site')
+       plt.bar(po_loc_list,[0.6]*len(po_loc_list),width=2,color='b',bottom=-0.5,label='Phos_site')
        #plt.bar(po_loc_list,po_ref_list,width=resMax/800,color='black')
-    else:
-        po_kde_list = [0]*int(resMax)
-        logging.warning('No phosphorylation sites in the protein!')
-    
-    plt.text(-(resMax/8),-4.3,'Ubiq_Sites:',fontsize=8)
-    plt.bar(resMax/2,0.6,width=resMax,bottom=-4.5,color='silver',alpha=0.2)
+    else:   
+        logging.warning('No Phosphorylation sites in the protein!')
+
+    plt.text(-(resMax/6.5),-3.3,'Ubiquitination:',fontsize=14)
+    plt.bar(resMax/2,0.6,width=resMax,bottom=-3.5,color='silver',alpha=0.2)
     if ub_dic.has_key(gene):
        ub_loc_list = [i[0] for i in ub_dic[gene] if i[1]>=2]
        ub_ref_list = [i[1] for i in ub_dic[gene] if i[1]>=2]
-       ub_kde_list = GetPtmKDE(ub_loc_list,resMax,4)
-       plt.bar(ub_loc_list,[0.6]*len(ub_loc_list),width=2,color='y',bottom=-4.5,label='Ubiq_site')
-    else:
-        ub_kde_list = [0]*int(resMax)
+       plt.bar(ub_loc_list,[0.6]*len(ub_loc_list),width=2,color='y',bottom=-3.5,label='Ubiq_site')
+    else:   
         logging.warning('No ubiquitylation sites in the protein!')
 
-    logging.info('Plotting kernel density estimation of acetylation sites...')
-    PlotKDE(resMax,gene,ac_kde_list,-0.75,'Acety_KDE:','Reds',False)
-    logging.info('Plotting kernel density estimation of methylation sites...')
-    PlotKDE(resMax,gene,me_kde_list,-2.25,'Methy_KDE:','Greens',False)
-    logging.info('Plotting kernel density estimation of phosphorylation sites...')
-    PlotKDE(resMax,gene,po_kde_list,-3.75,'Phos_KDE:','Purples',False)
-    logging.info('Plotting kernel density estimation of ubiquitylation sites...')
-    PlotKDE(resMax,gene,ub_kde_list,-5.25,'Ubiq_KDE:','Oranges',False)
+    
 
         
 '''This function is to plot bar track recording predicted secondary structures.
@@ -321,10 +309,10 @@ def PlotPMS(resMax,gene,po_dic,ac_dic,me_dic,ub_dic):
              structures: alpha helix(red), beta sheet(blue)
 '''
 def PlotSecondaryStructure(resMax,gene,ss_genome_dic):
-    plt.text(-(resMax/8),3.7,'SS_Predict:',fontsize=8)
-    plt.bar(resMax/2,0.6,width=resMax,bottom=3.5,color='silver',alpha=0.2)
-    plt.annotate('Helix',xy=(-(resMax/7.5),3.0),color='r',fontsize=8)
-    plt.annotate('Sheet',xy=(-(resMax/14),3.0),color='b',fontsize=8)
+    plt.text(-(resMax/6.5),2.7,'SS Predict:',fontsize=14)
+    plt.bar(resMax/2,0.6,width=resMax,bottom=2.5,color='silver',alpha=0.2)
+    plt.annotate('Helix',xy=(-(resMax/6.5),2.0),color='r',fontsize=12)
+    plt.annotate('Sheet',xy=(-(resMax/12.5),2.0),color='b',fontsize=12)
     if ss_genome_dic.has_key(gene):
        ss_list = ss_genome_dic[gene]
        h_pos_list = []; e_pos_list=[]; c_pos_list=[]
@@ -336,8 +324,8 @@ def PlotSecondaryStructure(resMax,gene,ss_genome_dic):
            elif ss == 'C':
                c_pos_list.append(res)
        ## red bar represent alpha helix and blue bar represent beta sheet
-       plt.bar(h_pos_list,[0.6]*len(h_pos_list),width=1,color='r',bottom=3.5,label='Alpha helix')
-       plt.bar(e_pos_list,[0.6]*len(e_pos_list),width=1,color='b',bottom=3.5,label='Beta sheet')
+       plt.bar(h_pos_list,[0.6]*len(h_pos_list),width=1,color='r',bottom=2.5,label='Alpha helix')
+       plt.bar(e_pos_list,[0.6]*len(e_pos_list),width=1,color='b',bottom=2.5,label='Beta sheet')
        #plt.scatter(c_pos_list,[1.1]*len(c_pos_list),marker='^',s=8,c='r')
        #plt.legend(loc='lower left',fontsize='small')
     else:
@@ -387,7 +375,7 @@ def GetSIFTKde(con_list,resMax,bw):
              position. More conserved darker color.
 '''
 def PlotConScore(resMax,gene,sift_genome_dic):
-    plt.text(-(resMax/8),5.7,'SIFT_Score:',fontsize=8)
+    plt.text(-(resMax/6.5),5.7,'SIFT Score:',fontsize=14)
     start = int(-(resMax/10));end = int(-(resMax/17.5));Len=end-start
     
     #plt.bar(range(start,end),height=[0.35]*(end-start),width=1,bottom=5.0,color=sns.color_palette('Reds',Len))
@@ -400,8 +388,8 @@ def PlotConScore(resMax,gene,sift_genome_dic):
             score_list = score_list[0:int(resMax)]
         else:
             score_list += [np.mean(score_list)]*(int(resMax)-len(score_list))
-        kde_list = GetSIFTKde(score_list,resMax,26)
-        PlotKDE(resMax,gene,kde_list,4.75,'SIFT_KDE:','Oranges',True)
+        #kde_list = GetSIFTKde(score_list,resMax,26)
+        #PlotKDE(resMax,gene,kde_list,4.75,'SIFT_KDE:','Oranges',True)
         pair_list = [(i+1,score_list[i]) for i in range(len(score_list))]
         pair_list = sorted(pair_list,key=lambda x:x[1],reverse=True)
         pos_new = [x[0] for x in pair_list]
@@ -465,14 +453,16 @@ def Visualization(gene,outputdir,exons_dic,sift_genome_dic,domain_genome_dic,ss_
                       +'Visualization stop... Try another gene alias name')
         sys.exit(-1)
     resList,resMax = GetResList(gene,exons_dic)
-    plt.figure(figsize=(8,6),dpi=300)
+    plt.figure(figsize=(12,8),dpi=300)
     gs = GridSpec(2, 1, height_ratios=[1,2.5])
     logging.info('Plotting scatters of z-scores and segments...')
+    plt.rcParams["font.size"] = 14
+    plt.rcParams["font.family"] = "Arial"
     plt.subplot(gs[0])
-    plt.title('HS_regions and annotations for '+ gene,fontsize=10)
+    plt.title('CKHS profile and annotations for '+ gene,fontsize=16)
     plt.xlim(-resMax/6,resMax*51/50)
     plt.xticks([])
-    plt.yticks(fontsize=8)
+    plt.yticks(fontsize=12)
     PlotScatterOfScore(resMax,gene)
     ax = plt.gca()
     ax.spines['top'].set_visible(False)
@@ -482,7 +472,7 @@ def Visualization(gene,outputdir,exons_dic,sift_genome_dic,domain_genome_dic,ss_
     
     plt.subplot(gs[1])
     plt.yticks([])
-    plt.ylim(-5.5,8.0)
+    plt.ylim(-6.0,8.0)
     plt.xlim(-resMax/6,resMax*51/50)
     plt.xticks([i-i%10 for i in range(0,int(resMax),int(resMax/100)*10)])
     logging.info('Plotting HS regions...')
@@ -503,10 +493,10 @@ def Visualization(gene,outputdir,exons_dic,sift_genome_dic,domain_genome_dic,ss_
     ax.spines['bottom'].set_visible(False)
     
     ax.spines['left'].set_visible(False)
-    x = np.linspace(0,resMax);y = 0*x-5.5
+    x = np.linspace(0,resMax);y = 0*x-6
     plt.plot(x,y,color='black')
     
-    plt.text(-(resMax/7.5),-5.7,'AA_Location:',fontsize=8)
+    plt.text(-(resMax/6.5),-6,'AA Location:',fontsize=14)
     #plt.xlabel('Residue location',fontsize=10)
     plt.tight_layout(h_pad=0)
     logging.info('Saving figures...')
