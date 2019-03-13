@@ -359,6 +359,7 @@ def Plot(df_hs,gene,outputdir):
     ubi_list = list(df_hs['ubiquitylation'])
     
     plt.figure(figsize=(10,8),dpi=300)
+    plt.title('Predicted CKHS region and protein annotations for ' + gene)
     logging.info('Plot predicted HS regions...')
     PlotBilist(resMax,svm_class,8.0,'HS_Region','darkred')
     
