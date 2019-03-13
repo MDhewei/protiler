@@ -45,7 +45,7 @@ install.packages('stringr')
 
 ```console
 git clone https://github.com/MDhewei/ProTiler-1.0.0.git
-cd ProTiler
+cd ProTiler-1.0.0
 python setup.py install
 ```
 
