@@ -59,7 +59,7 @@ python setup.py install
 
 ### Protiler call take table file(.cvs or .txt) recording CRISPR tiling screen data as inpu.An example is shown as below: 
 
-![](ExampleFiles/InputTable.png)
+![](ExampleFigures/InputTable.png)
 
 ### Three colums are required:
 
