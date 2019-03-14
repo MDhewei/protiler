@@ -116,7 +116,7 @@ protiler call -i sample.txt -g CREBBP -s 9,10,11 -o ProtilerOutput
 ### Output
 
 #### 1. SegmentFile: A table record all the HS regions called by ProTiler for certain gene.
-![](ExampleFiles/HS_CREBBP.png)
+![](ExampleFigures/HS_CREBBP.png)
 
 - AA.start: the start residue position of the segments called with TGUH
 - AA.end: the end residue position of the segments called with TGUH
@@ -128,7 +128,7 @@ protiler call -i sample.txt -g CREBBP -s 9,10,11 -o ProtilerOutput
 
 #### 2. Figure4Visualization: Figure presenting signals, HS regions and other protein annotations. For example:
 
-![](ExampleFiles/Segmentfigure_CREBBP.png)
+![](ExampleFigures/Segmentfigure_CREBBP.png)
 
 
 
@@ -178,9 +178,9 @@ protiler predict -l CREBBP,FAM122A,SAMRCB1,AURKB -o ProtilerOutput
 
 #### 1. PredictionTable: A table record all the features of target protein and SVM score/class at each residue postion.
 
-![](ExampleFiles/FAM122A_predict.png)
+![](ExampleFigures/FAM122A_predict.png)
 
 #### 2. Figure4Visualization: Figure presenting predicted  HS regions and other protein annotations. For example:
-![](ExampleFiles/PredictedHSregion_FAM122A.png)
+![](ExampleFigures/PredictedHSregion_FAM122A.png)
 
 
