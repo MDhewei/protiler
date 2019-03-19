@@ -96,8 +96,19 @@ def PlotScatterOfScore(resMax,gene):
     os.system('rm '+gene+'_Est.csv')
     os.system('rm '+gene+'_Score.csv')
     
-
-
+def MergeHSregion(hs_list,start_index=0):
+    for i in range(start_index,len(hs_list)-1):
+        if int(hs_list[i+1][1]) - int(hs_list[i][2]) < 5:
+            hs_new = [hs_list[i][0],hs_list[i][1],hs_list[i+1][2],hs_list[i][3]+hs_list[i+1][3],
+                      (hs_list[i][4]+hs_list[i+1][4])/2, hs_list[i][5]+hs_list[i+1][5]]
+            hs_list[i] = hs_new
+            del hs_list[i+1]
+            print hs_list
+            return MergeHSregion(hs_list,start_index=i)
+            
+    return hs_list
+        
+            
 '''This function is plot the HS region called by our method in a bar track
 
    o input:  (1) resMax: The length of protein encoded by target gene. 
@@ -112,6 +123,14 @@ def PlotScatterOfScore(resMax,gene):
 def PlotHSregion(resMax,gene,outputdir):
     ## Read the HS region information from table file.
     df_hs = pd.read_csv(gene+'_Segments.csv')
+    print df_hs
+    hs_list = []
+    for i in range(0,df_hs.shape[0]):
+        hs_list.append([df_hs['Gene'][i],df_hs['AA.start'][i],df_hs['AA.end'][i],df_hs['n'][i],
+                        df_hs['m'][i],df_hs['lenght'][i]])
+    
+    hs_list = MergeHSregion(hs_list)
+    df_hs =  pd.DataFrame(hs_list,columns=['Gene','AA.start','AA.end','n','m','length'])
     plt.text(-(resMax/6.5),7.2,'CKHS_Regions:',fontsize=14)
     
     ## Generate a blank track with light color
@@ -123,12 +142,12 @@ def PlotHSregion(resMax,gene,outputdir):
         score = list(df_hs['m'])[i]
         plt.bar(start + (end-start)/2, 0.6 ,width=end-start,bottom = 7.0,facecolor='darkred',alpha=0.3)
         #x = np.linspace(start+5,end-5);y = 0*x+3.5
-        
+    
+    df_hs.to_csv(outputdir+'/'+gene+'_CKHS_Regions.csv')
     ## move the file recording HS regions into outputfir
-    os.system('mv '+gene+'_Segments.csv '+ outputdir+'/'+gene+'_Segments.csv')
-    
+    os.system('rm '+gene+'_Segments.csv')
 
-    
+      
 '''This function is plot the pfam domain annotation in a bar track.
 
    o input:  (1) resMax: The length of protein encoded by target gene. 
