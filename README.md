@@ -42,7 +42,7 @@ install.packages('stringr')
 ```
 
 ### Step3: Install ProTiler 
-### Note: Since some large files are uploaded using git lfs, Make sure git lfs is installed before downloding
+#### Note: Since some large files are uploaded using git lfs, make sure git lfs is installed before downloading
 
 ```console
 git clone https://github.com/MDhewei/ProTiler-1.0.0.git
