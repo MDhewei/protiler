@@ -66,7 +66,7 @@ python setup.py install
 
 - Symbol: This column record the symbol of target gene, for example: 'CREBBP','ACTL6A' 
 
-- AA: the amino acid position which certain sgRNAs cutting (what does this means?)
+- AA:  The cutting loci of the corresponding sgRNA at amino acid level
 
 - CRISPR score: the signals for each sgRNA, in the example file, z-scores in three different cell lines are used. User should select at least one column.
 
