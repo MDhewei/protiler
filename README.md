@@ -58,7 +58,7 @@ python setup.py install
 ## 1. Call: Call and visualize HS regions from CRISPR tiling screen data.
 
 
-### Protiler call take table file(.cvs or .txt) recording CRISPR tiling screen data as inpu.An example is shown as below: 
+### Protiler call take table file(.cvs or .txt) recording CRISPR tiling screen data as input.An example is shown as below: 
 
 ![](ExampleFigures/InputTable.png)
 
