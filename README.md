@@ -10,7 +10,7 @@ Also, ProTiler is able to predict HS regions for protein encoded by any given ge
 
 ## Installation
 
-ProTiler is written in Python and R, Python2.7 and R3.5.0 is needed
+ProTiler is written in Python and R, Python2.7 and R>=3.5.0 is needed
 
 ### Dependencies
 > **Python Packages**:
