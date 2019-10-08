@@ -9,7 +9,7 @@ Also, ProTiler is able to predict HS regions for protein encoded by any given ge
 
 If you use ProTiler please cite the following paper we published on Nature Communications:
 
-He et al. De novo identification of essential protein domains from CRISPR-Cas9 tiling-sgRNA knockout screens. Nat Commun 10,4547 (2019).
+He et al. De novo identification of essential protein domains from CRISPR-Cas9 tiling-sgRNA knockout screens. **Nat Commun 10**, 4547(2019).
 
 
 ## Installation
