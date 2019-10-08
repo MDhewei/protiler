@@ -7,6 +7,10 @@ ProTiler is a novel computational method for fine-mapping of protein regions tha
 
 Also, ProTiler is able to predict HS regions for protein encoded by any given gene from other common protein features including conservation, domain annotation, secondary structures and PTMs distribution.
 
+If you use ProTiler please cite the following paper we published on Nature Communications:
+
+He et al. De novo identification of essential protein domains from CRISPR-Cas9 tiling-sgRNA knockout screens. Nat Commun 10,4547 (2019).
+
 
 ## Installation
 
