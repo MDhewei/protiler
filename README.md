@@ -1,6 +1,7 @@
 ![](https://img.shields.io/badge/Pypi-v1.0.2-519dd9.svg)
 ![](https://img.shields.io/badge/language-python-orange.svg)
-[![License: GUN](https://img.shields.io/badge/License-GUN-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: GUN](https://img.shields.io/badge/License-GUN-yellow.svg)](https://github.com/MDhewei/ProTiler-1.0.0/blob/master/LISENCE.txt)
+
 
 Copyright (C) 2019, MD Anderson Cancer Center (whe3@mdanderson.org)
 
