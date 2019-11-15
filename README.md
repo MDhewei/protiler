@@ -1,3 +1,5 @@
+![](https://img.shields.io/cocoapods/v/Alamofire.svg?style=flat)
+
 Copyright (C) 2019, MD Anderson Cancer Center (whe3@mdanderson.org)
 
 
