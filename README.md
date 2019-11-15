@@ -166,9 +166,9 @@ protiler call -i sample.txt -g CREBBP -s 9,10,11 -o ProtilerOutput
      Bandwidth for PTMs kernel density estimation training
  
  
-- -b2/--bandwidth2:: 
+- -b2/--bandwidth2:
 
-     Bandwideth for SIFT score kernel density estimation training
+     Bandwidth for SIFT score kernel density estimation training
  
  
 - -o/--outputdir: 
