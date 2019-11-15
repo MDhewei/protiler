@@ -1,7 +1,7 @@
 [![](https://img.shields.io/badge/Pypi-v1.0.2-519dd9.svg)](https://pypi.org/project/protiler/)
 [![License: GUN](https://img.shields.io/badge/License-GUN-yellow.svg)](https://github.com/MDhewei/ProTiler-1.0.0/blob/master/LISENCE.txt)
 ![](https://img.shields.io/badge/language-python-orange.svg)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1291646.svg)](https://doi.org/10.1038/s41467-019-12489-8)
+[![DOI](https://www.nature.com/badge/DOI/10.5281/zenodo.1291646.svg)](https://doi.org/10.1038/s41467-019-12489-8)
 
 Copyright (C) 2019, MD Anderson Cancer Center (whe3@mdanderson.org)
 
