@@ -14,7 +14,7 @@ He et al. De novo identification of essential protein domains from CRISPR-Cas9 t
 
 ## Installation
 
-ProTiler is written in Python and R, Python2.7 and R>=3.5.0 is needed
+ProTiler is written in Python and R, Python>=2.7 and R>=3.5.0 is needed
 ## Note: Since some large files are uploaded using git lfs, make sure git lfs is installed before downloading
 
 ### Dependencies
