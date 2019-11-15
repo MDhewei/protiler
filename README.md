@@ -17,6 +17,19 @@ If you use ProTiler please cite the following paper we published on Nature Commu
 He et al. De novo identification of essential protein domains from CRISPR-Cas9 tiling-sgRNA knockout screens. **Nat Commun 10**, 4547(2019).
 
 
+## Recent Changes for ProTiler
+
+### 1.0.2
+	
+	* Features added
+	
+	1) New version is compatible to both python2 and python3.
+
+	2) The package has been uploaded to pipy. Users now can install directly through:
+        ```console
+        pip install protiler
+        ```
+	
 ## Installation
 
 ProTiler is written in Python and R, Python>=2.7 and R>=3.5.0 is needed
