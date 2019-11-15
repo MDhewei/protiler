@@ -19,16 +19,12 @@ He et al. De novo identification of essential protein domains from CRISPR-Cas9 t
 
 ## Recent Changes for ProTiler
 
-### 1.0.2
-	
-	* Features added
-	
-	1) New version is compatible to both python2 and python3.
+1) New version 1.0.2 is compatible to both python2 and python3.
 
-	2) The package has been uploaded to pipy. Users now can install directly through:
-        ```console
-        pip install protiler
-        ```
+2) The package has been uploaded to pipy. Users now can install directly through:
+```console
+   pip install protiler
+```
 	
 ## Installation
 
