@@ -43,7 +43,7 @@ def GetPTMList(gene,PTM_dic,aa_list,bw):
     x_grid = np.array(aa_list).reshape(-1,1)
     kde_value = [0]*len(x_grid)
     
-    if PTM_dic.has_key(gene):
+    if gene in PTM_dic:
         ptm_list = []
         for i in PTM_dic[gene]:
             if int(i[1]) >=2:
@@ -154,7 +154,7 @@ def GetFeatureTable(gene,bd1,bd2,exons_dic,domain_genome_dic,ss_genome_dic,sift_
         
     logging.info('Start annotation process for %s'%gene)
     logging.info('Get exons information of target gene...')
-    if exons_dic.has_key(gene):
+    if gene in exons_dic:
         strand = exons_dic[gene]['strand']
         if strand == '+':
             exon_list = exons_dic[gene]['exons']
@@ -167,7 +167,7 @@ def GetFeatureTable(gene,bd1,bd2,exons_dic,domain_genome_dic,ss_genome_dic,sift_
     
     logging.info('Extract residues located within annotated pfam protein domain...')
     dom_ls = []
-    if domain_genome_dic.has_key(gene):
+    if gene in domain_genome_dic:
         for dom in domain_genome_dic[gene].keys():
             start = domain_genome_dic[gene][dom]['start']
             end = domain_genome_dic[gene][dom]['end']
@@ -179,7 +179,7 @@ def GetFeatureTable(gene,bd1,bd2,exons_dic,domain_genome_dic,ss_genome_dic,sift_
     ac_kde_list = []; me_kde_list=[]; ub_kde_list=[];iso_list=[]; H_list=[]
     
     logging.info('Get conservation(SIFT) score at each residue position...')
-    if sift_genome_dic.has_key(gene):
+    if gene in sift_genome_dic:
         con_list = sift_genome_dic[gene]
         con_kde_value = GetSIFTKde(con_list,aa_list,bd2)
     else:
@@ -191,7 +191,7 @@ def GetFeatureTable(gene,bd1,bd2,exons_dic,domain_genome_dic,ss_genome_dic,sift_
         gene_list.append(gene)
         
         ## To get secondary structure prediction at each residue position
-        if ss_genome_dic.has_key(gene):
+        if gene in ss_genome_dic:
             if res <= len(ss_genome_dic[gene]):
                 ss = ss_genome_dic[gene][res-1]
                 if ss == 'H': H_list.append(1);B_list.append(0)

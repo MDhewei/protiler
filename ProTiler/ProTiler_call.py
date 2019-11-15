@@ -103,7 +103,7 @@ def MergeHSregion(hs_list,start_index=0):
                       (hs_list[i][4]+hs_list[i+1][4])/2, hs_list[i][5]+hs_list[i+1][5]]
             hs_list[i] = hs_new
             del hs_list[i+1]
-            print hs_list
+            #print hs_list
             return MergeHSregion(hs_list,start_index=i)
             
     return hs_list
@@ -123,7 +123,7 @@ def MergeHSregion(hs_list,start_index=0):
 def PlotHSregion(resMax,gene,outputdir):
     ## Read the HS region information from table file.
     df_hs = pd.read_csv(gene+'_Segments.csv')
-    print df_hs
+    #print df_hs
     hs_list = []
     for i in range(0,df_hs.shape[0]):
         hs_list.append([df_hs['Gene'][i],df_hs['AA.start'][i],df_hs['AA.end'][i],df_hs['n'][i],
@@ -165,7 +165,7 @@ def PlotDomain(resMax,gene,domain_genome_dic):
     plt.text(-(resMax/6.5),4.2,'Pfam_Domains:',fontsize=14)
     
     ## Make sure the domain_dic contains the target genes
-    if domain_genome_dic.has_key(gene):
+    if gene in domain_genome_dic:
        domain_dic = domain_genome_dic[gene]
        color_list = ['red','blue','purple','yellowgreen','orange','green','brown','pink',
                      'darkcyan','coral','darkorange','darkred','gray','silver']
@@ -206,8 +206,8 @@ def PlotDomain(resMax,gene,domain_genome_dic):
 '''   
 def GetResList(gene,exons_dic):
     ## Make sure that the exons_dic contains infotmation of target gene
-    if exons_dic.has_key(gene): 
-        print gene
+    if gene in exons_dic: 
+        #print gene
         strand = exons_dic[gene]['strand']
         if strand == '+':
             exon_list = exons_dic[gene]['exons']
@@ -275,7 +275,7 @@ def GetPtmKDE(ptm_list,resMax,bw):
 def PlotPMS(resMax,gene,po_dic,ac_dic,me_dic,ub_dic):
     plt.text(-(resMax/6.5),-1.8,'Acetylation:',fontsize=14)
     plt.bar(resMax/2,0.6,width=resMax,bottom=-2.0,color='silver',alpha=0.2)
-    if ac_dic.has_key(gene):
+    if gene in ac_dic:
        ac_loc_list = [i[0] for i in ac_dic[gene] if i[1]>=2]
        ac_ref_list = [i[1] for i in ac_dic[gene] if i[1]>=2]
        #print ac_loc_list,ac_ref_list
@@ -287,7 +287,7 @@ def PlotPMS(resMax,gene,po_dic,ac_dic,me_dic,ub_dic):
     
     plt.text(-(resMax/6.5),-4.8,'Methylation:',fontsize=14)
     plt.bar(resMax/2,0.6,width=resMax,bottom=-5.0,color='silver',alpha=0.2)
-    if me_dic.has_key(gene):
+    if gene in me_dic:
        me_loc_list = [i[0] for i in me_dic[gene] if i[1]>=2]
        me_ref_list = [i[1] for i in me_dic[gene] if i[1]>=2]
        plt.bar(me_loc_list,[0.6]*len(me_loc_list),width=2,color='g',bottom=-5.0,label='Methy_site')
@@ -297,7 +297,7 @@ def PlotPMS(resMax,gene,po_dic,ac_dic,me_dic,ub_dic):
 
     plt.text(-(resMax/6.5),-0.3,'Phosphorylation:',fontsize=14)
     plt.bar(resMax/2,0.6,width=resMax,bottom=-0.5,color='silver',alpha=0.2)
-    if po_dic.has_key(gene):
+    if gene in po_dic:
        po_loc_list = [i[0] for i in po_dic[gene] if i[1]>=2]
        po_ref_list = [i[1] for i in po_dic[gene] if i[1]>=2]
        plt.bar(po_loc_list,[0.6]*len(po_loc_list),width=2,color='b',bottom=-0.5,label='Phos_site')
@@ -307,7 +307,7 @@ def PlotPMS(resMax,gene,po_dic,ac_dic,me_dic,ub_dic):
 
     plt.text(-(resMax/6.5),-3.3,'Ubiquitination:',fontsize=14)
     plt.bar(resMax/2,0.6,width=resMax,bottom=-3.5,color='silver',alpha=0.2)
-    if ub_dic.has_key(gene):
+    if gene in ub_dic:
        ub_loc_list = [i[0] for i in ub_dic[gene] if i[1]>=2]
        ub_ref_list = [i[1] for i in ub_dic[gene] if i[1]>=2]
        plt.bar(ub_loc_list,[0.6]*len(ub_loc_list),width=2,color='y',bottom=-3.5,label='Ubiq_site')
@@ -332,7 +332,7 @@ def PlotSecondaryStructure(resMax,gene,ss_genome_dic):
     plt.bar(resMax/2,0.6,width=resMax,bottom=2.5,color='silver',alpha=0.2)
     plt.annotate('Helix',xy=(-(resMax/6.5),2.0),color='r',fontsize=12)
     plt.annotate('Sheet',xy=(-(resMax/12.5),2.0),color='b',fontsize=12)
-    if ss_genome_dic.has_key(gene):
+    if gene in ss_genome_dic:
        ss_list = ss_genome_dic[gene]
        h_pos_list = []; e_pos_list=[]; c_pos_list=[]
        for res,ss in enumerate(ss_list,1):
@@ -401,7 +401,7 @@ def PlotConScore(resMax,gene,sift_genome_dic):
     #plt.annotate('High',xy=(-(resMax/7.5),5.0),fontsize=8)
     #plt.annotate('Low',xy=(-(resMax/19),5.0),fontsize=8)
     
-    if  sift_genome_dic.has_key(gene):
+    if  gene in sift_genome_dic:
         score_list = sift_genome_dic[gene]
         if int(resMax) <= len(score_list):
             score_list = score_list[0:int(resMax)]
@@ -467,7 +467,7 @@ def PlotKDE(resMax,gene,kde_list,pos,name,color,a):
    
 '''
 def Visualization(gene,outputdir,exons_dic,sift_genome_dic,domain_genome_dic,ss_genome_dic,po_dic,ac_dic,me_dic,ub_dic):
-    if exons_dic.has_key(gene)== False:
+    if gene not in exons_dic:
         logging.error('The information of ' +Gene +' is not available in the database.' 
                       +'Visualization stop... Try another gene alias name')
         sys.exit(-1)
