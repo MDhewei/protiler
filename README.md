@@ -8,9 +8,9 @@ Copyright (C) 2019, MD Anderson Cancer Center (whe3@mdanderson.org)
 
 # ProTiler
 
-ProTiler is a novel computational method for fine-mapping of protein regions that are hyper-sensitive to CRISPR/Cas9 mediated gene knockouts from high-throughput tiling-sgRNA functional screens. 
+ProTiler is a novel computational method for fine-mapping of protein regions that are hyper-sensitive to CRISPR/Cas9 mediated gene knockouts(CKHS region) from high-throughput tiling-sgRNA functional screens. 
 
-Also, ProTiler is able to predict HS regions for protein encoded by any given gene from other common protein features including conservation, domain annotation, secondary structures and PTMs distribution.
+Also, ProTiler is able to predict CKHS regions for protein encoded by any given gene from other common protein features including conservation, domain annotation, secondary structures and PTMs distribution.
 
 If you use ProTiler please cite the following paper we published on Nature Communications:
 
