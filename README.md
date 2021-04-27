@@ -34,10 +34,10 @@ ProTiler is written in Python and R, Python>=2.7 and R>=3.5.0 is needed
 
 ### Dependencies
 > **Python Packages**:
-- matplotlib, pandas, numpy, seaborn
+- matplotlib >=2.2.3, pandas >=1.2.0, numpy >=1.17.5, seaborn >=0.9.0
 
 > **R packages**:
-- breakfast,  stringr
+- breakfast(v0.1.0),  stringr
 
 ### Step1: Install Anaconda (highly recomended)
 ```console
@@ -49,12 +49,14 @@ bash Anaconda2-2018.12-Linux-x86_64.sh
 
 > **Install Python Packages with pip**:
 ```console
-pip install matplotlib==2.2.3 pandas sklearn numpy seaborn
+pip install matplotlib pandas sklearn numpy seaborn
 ```
 > **Install R packages in R IDE**:
 ```r
-install.packages('breakfast')
 install.packages('stringr')
+
+require(devtools)
+install_version("breakfast", version = "0.1.0", repos = "http://cran.us.r-project.org")
 ```
 
 ### Step3: Install ProTiler 
