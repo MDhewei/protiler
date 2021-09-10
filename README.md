@@ -33,7 +33,7 @@ ProTiler is written in Python and R, Python>=2.7 and R>=3.5.0 is needed
 
 ### Dependencies
 > **Python Packages**:
-- matplotlib >=2.2.3, pandas >=1.2.0, numpy >=1.17.5, seaborn >=0.9.0
+- scikit-learn==0.22.1, matplotlib >=2.2.3, pandas >=1.2.0, numpy >=1.17.5, seaborn >=0.9.0
 
 > **R packages**:
 - breakfast(v0.1.0),  stringr
