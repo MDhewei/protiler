@@ -2,7 +2,6 @@
 [![License: GUN](https://img.shields.io/badge/License-GUN-yellow.svg)](https://github.com/MDhewei/ProTiler-1.0.0/blob/master/LISENCE.txt)
 ![](https://img.shields.io/badge/language-python/R-orange.svg)
 
-# ProTiler
 
 <div align="left"><img src="ExampleFigures/protiler-high-resolution-logo-color-on-transparent-background.png"  height="140" width="600"></div>
 
